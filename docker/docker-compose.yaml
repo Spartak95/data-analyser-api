@@ -15,29 +15,6 @@ volumes:
     driver: local
 
 services:
-  generator:
-    image: 'spartak95/data-generator-api:latest'
-    networks:
-      - app
-    depends_on:
-      - kafka
-    env_file:
-      - .env
-    ports:
-      - '8081:8081'
-
-  analyser:
-    image: 'spartak95/data-analyser-api:latest'
-    networks:
-      - app
-    depends_on:
-      - postgres
-      - kafka
-    env_file:
-      - .env
-    ports:
-      - '8082:8082'
-
   zookeeper:
     image: 'confluentinc/cp-zookeeper:latest'
     networks:
